@@ -1,0 +1,59 @@
+﻿@page
+@model RegisterModel
+@{
+    Layout = "~/Areas/Identity/Pages/_AuthLayout.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="padding-right: 0px; padding-left: 0px;">
+                <div class="box-static box-border-top p-30">
+                    <div class="box-title mb-30">
+                        <h2 class="fs-20">Register</h2>
+                    </div>
+                    <form form asp-route-returnUrl="@Model.ReturnUrl" method="post" class="m-0">
+                        <div class="clearfix">
+
+                            <!-- Email -->
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="form-group">
+                                <input asp-for="Input.Email" class="form-control" placeholder="Email Address" required="" />
+                                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                            </div>
+                            
+                            <div class="row">
+                                <!-- Password -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input asp-for="Input.Password"  class="form-control" placeholder="Password" required="" />
+                                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                    </div>                                   
+                                </div>
+
+                                <!-- Confirm Password -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input asp-for="Input.ConfirmPassword" class="form-control" placeholder="Confirm Password" />
+                                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                                    </div>                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-6 col-6 text-right" style="padding-top: 2%;">
+                                <button type="submit" class="btn btn-primary btn-block">REGISTER</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
