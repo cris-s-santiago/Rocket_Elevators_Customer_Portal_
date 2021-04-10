@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Odyssey\\Week_11\\Rocket_Elevators_Customer_Portal.csproj": {}
+    "C:\\Odyssey\\Rocket Elevator Portal\\Rocket_Elevators_Customer_Portal.csproj": {}
   },
   "projects": {
-    "C:\\Odyssey\\Week_11\\Rocket_Elevators_Customer_Portal.csproj": {
+    "C:\\Odyssey\\Rocket Elevator Portal\\Rocket_Elevators_Customer_Portal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Odyssey\\Week_11\\Rocket_Elevators_Customer_Portal.csproj",
+        "projectUniqueName": "C:\\Odyssey\\Rocket Elevator Portal\\Rocket_Elevators_Customer_Portal.csproj",
         "projectName": "Rocket_Elevators_Customer_Portal",
-        "projectPath": "C:\\Odyssey\\Week_11\\Rocket_Elevators_Customer_Portal.csproj",
+        "projectPath": "C:\\Odyssey\\Rocket Elevator Portal\\Rocket_Elevators_Customer_Portal.csproj",
         "packagesPath": "C:\\Users\\criss\\.nuget\\packages\\",
-        "outputPath": "C:\\Odyssey\\Week_11\\obj\\",
+        "outputPath": "C:\\Odyssey\\Rocket Elevator Portal\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\criss\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -60,7 +60,7 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[5.0.4, )"
+              "version": "[5.0.5, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
