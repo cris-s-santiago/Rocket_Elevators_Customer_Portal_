@@ -78,7 +78,7 @@ namespace Rocket_Elevators_Customer_Portal.Areas.Identity.Pages.Account
             // API Resquet to validate email with DB
             var customer = new HttpClient();
             var email = Input.Email;
-            var responseApi = await customer.GetAsync("https://localhost:5001/api/customers/" + email);            
+            var responseApi = await customer.GetAsync("https://rocket-elevators.azurewebsites.net/api/customers/" + email);            
             var content = responseApi.Content.ReadAsStringAsync().Result;
 
             if (content.Contains(Input.Email))
