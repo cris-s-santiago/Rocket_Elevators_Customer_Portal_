@@ -22,6 +22,7 @@
 
                 <script>
                     let customer = JSON.parse('@Html.Raw(Json.Serialize(ViewBag.customer))');
+                    let address = JSON.parse('@Html.Raw(Json.Serialize(ViewBag.address))');
                 </script>
 
                 <label for="company_name">Company Name</label>
@@ -52,10 +53,24 @@
                 <input required type="text" value="@ViewBag.customer.technical_authority_phone_for_service_" class="form-control" name="technical_authority_phone_for_service_" id="technical_authority_phone_for_service_">
                 <br />
 
-
-
                 <label for="technical_manager_email_for_service">Support Contact Email</label>
                 <input required type="text" value="@ViewBag.customer.technical_manager_email_for_service" class="form-control" name="technical_manager_email_for_service" id="technical_manager_email_for_service">
+                <br />
+
+                <label for="number_and_street">Address</label>
+                <input required type="text" value="@ViewBag.address.number_and_street" class="form-control" name="number_and_street" id="number_and_street">
+                <br />
+
+                <label for="city">City</label>
+                <input required type="text" value="@ViewBag.address.city" class="form-control" name="city" id="city">
+                <br />
+
+                <label for="postal_code">Postal Code</label>
+                <input required type="text" value="@ViewBag.address.postal_code" class="form-control" name="postal_code" id="postal_code">
+                <br />
+
+                <label for="country">Country</label>
+                <input required type="text" value="@ViewBag.address.country" class="form-control" name="country" id="country">
                 <br />
 
 

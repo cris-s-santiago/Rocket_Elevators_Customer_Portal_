@@ -34,48 +34,36 @@ namespace Rocket_Elevators_Customer_Portal.Controllers
 
         public IActionResult Intervention()
         {
-            var customer = new HttpClient();
-            var email = _userManager.GetUserName(User);
-            var responseApiCustomer = customer.GetStringAsync("https://rocket-elevators.azurewebsites.net/api/customers/FullInfo/" + email).GetAwaiter().GetResult();
-            Customer customerInfo = JsonConvert.DeserializeObject<Customer>(responseApiCustomer);
-            Console.WriteLine("***************");
-            Console.WriteLine(customerInfo.buildings.Where(building => building.id == 2));
-            Console.WriteLine("***************");
-            ViewBag.customer = customerInfo;
+            ViewBag.customer = getFullData();
 
             return View();
         }
 
         public IActionResult Product()
         {
-            var customer = new HttpClient();
-            var email = _userManager.GetUserName(User);
-            var responseApiCustomer = customer.GetStringAsync("https://rocket-elevators.azurewebsites.net/api/customers/FullInfo/" + email).GetAwaiter().GetResult();
-            Customer customerInfo = JsonConvert.DeserializeObject<Customer>(responseApiCustomer);
-            ViewBag.customer = customerInfo;
-            
-            return View(customerInfo);
+            var customerInfoProduct = getFullData();
+            ViewBag.customer = customerInfoProduct;
+
+            return View(customerInfoProduct);
         }
 
         public IActionResult Profile()
         {
-            var customer = new HttpClient();
-            var email = _userManager.GetUserName(User);
-            var responseApiCustomer = customer.GetStringAsync("https://rocket-elevators.azurewebsites.net/api/customers/FullInfo/" + email).GetAwaiter().GetResult();
-            Customer customerInfo = JsonConvert.DeserializeObject<Customer>(responseApiCustomer);
-            ViewBag.customer = customerInfo;
+            var customerInfoProfile = getFullData();
+            ViewBag.customer = customerInfoProfile;
+
+            var address = new HttpClient();
+            var responseApiAddress = address.GetStringAsync("https://rocket-elevators.azurewebsites.net/api/addresses/" + customerInfoProfile.address_id).GetAwaiter().GetResult();
+            Address customerAdress = JsonConvert.DeserializeObject<Address>(responseApiAddress);
+            ViewBag.address = customerAdress;
 
             return View();
         }
 
         public IActionResult InterventionViaProduct( string columnId, string elevatorId, string buildingId, string batteryId)
         {
-            var customer = new HttpClient();
-            var email = _userManager.GetUserName(User);
-            var responseApiCustomer = customer.GetStringAsync("https://rocket-elevators.azurewebsites.net/api/customers/FullInfo/" + email).GetAwaiter().GetResult();
-            Customer customerInfo = JsonConvert.DeserializeObject<Customer>(responseApiCustomer);
-            
-            ViewBag.customer = customerInfo;
+            ViewBag.customer = getFullData();
+
             ViewBag.columnId = columnId;
             ViewBag.elevatorId = elevatorId;
             ViewBag.buildingId = buildingId;
@@ -85,33 +73,14 @@ namespace Rocket_Elevators_Customer_Portal.Controllers
             return View("~/Views/Home/Intervention.cshtml");
         }
 
-        [HttpPost]
-        public ActionResult UpdateCustomer(Customer custumerInfo)
+        public Customer getFullData()
         {
-            using (var http = new HttpClient())
-            {
-                // Define authorization headers here, if any
-                // http.DefaultRequestHeaders.Add("Authorization", authorizationHeaderValue);
+            var customer = new HttpClient();
+            var email = _userManager.GetUserName(User);
+            var responseApiCustomer = customer.GetStringAsync("https://rocket-elevators.azurewebsites.net/api/customers/FullInfo/" + email).GetAwaiter().GetResult();
+            Customer customerInfo = JsonConvert.DeserializeObject<Customer>(responseApiCustomer);
 
-                var data = custumerInfo;
-
-                var content = new StringContent(JsonConvert.SerializeObject(data));
-                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-
-                var request = http.PostAsync("https://rocket-elevators.azurewebsites.net/api/Customers", content);
-
-                request.Wait();
-
-                var result = request.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    return RedirectToAction("Profile");
-                }
-            }
-
-            //ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
-
-            return View();
+            return customerInfo;
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -28,6 +28,32 @@
         }
     });
 
-    return false;
+    var dataAdrees = {
+        number_and_street: $('#number_and_street').val(),
+        city: $('#city').val(),
+        postal_code: $('#postal_code').val(),
+        country: $('#country').val()
+    }
 
+    data2 = JSON.stringify(dataAdrees);
+    console.log(data2);
+
+    $.ajax({
+        url: 'https://rocket-elevators.azurewebsites.net/api/Addresses',
+        type: 'PUT',
+        data: data2,
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "HEAD, GET, POST, PUT, PATCH, DELETE",
+            "Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        success: function (result) {
+            //alert('Address updated successfully!');
+            return false;
+        }
+    });
+
+    return false;
 }
