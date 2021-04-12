@@ -1,6 +1,6 @@
 ![](wwwroot/images/week11photo01.jpg)
 
-# Rocket Elevators Customer Portal <img src="images/R2.png" align="right" alt="Rocket Elevators logo" width="" height="100">
+# Rocket Elevators Customer Portal <img src="wwwroot/images/R2.png" align="right" alt="Rocket Elevators logo" width="" height="100">
 -----------------------------------------------------------------------------------------------
 
 ## CodeBoxx Odissey - Week 11 - .NET Core
